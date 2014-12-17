@@ -10,14 +10,14 @@
   to come from the user list instead
 
 """
-import sys
+import sys, os
 from random import shuffle
 
 house_width = 40
 if(len(sys.argv) == 2):
 	house_width = int(sys.argv[1])
 
-users = ['Peter', 'Caridad', 'Jadwiga', 'Scottie', 'Edison', 'Dominick', 'Wilbert', 'Jasper', 'Roel', 'Ed', 'Jiskar', 'Alexander', 'Ferdinand', 'Bob']
+users = os.listdir('/home/')
 shuffle(users)
 
 house_middle = ''
@@ -32,6 +32,10 @@ while len(users) > 0:
 	user_index = 0;
 
 	for user in users:
+
+		#turn the users into HTML
+		#user_html = '<a href="/~'+user+'"/> '+user+'</a>'		
+
 		if len(line_1) + len(user) + 5 < house_width:
 			line_1 += "  _" +"_"*len(user)+ "_  "
 			line_2 += " | " +" "*len(user)+ " | "

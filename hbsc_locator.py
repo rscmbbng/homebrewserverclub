@@ -2,15 +2,11 @@
 
 
 import twitter, os, socket, re, commands
+
 from requests import get
+from hbsc_auth_keys import consumer_key, consumer_secret, access_token, access_token_secret
 
-#API Keys
-consumer_key = ''
-consumer_secret = ''
-acces_token = ''
-access_token_secret = ''
-
-
+# Twitter auth tokens are in a separate file which is not pushed to git!
 
 ip_file = '/var/www/ip' #change me to whatever you like
 local_ip_file = '/var/www/local_ip'
@@ -31,7 +27,7 @@ if os.path.exists(ip_file) and os.path.exists(local_ip_file):
 	old_ip = open(ip_file).read().strip('\n')
 	old_local_ip = open(local_ip_file).read().strip('\n')
 	if ip != old_ip or local_ip != old_local_ip:
-		api = twitter.Api(consumer_key = consumer_key, consumer_secret=consumer_secret, access_token_key = acces_token, access_token_secret=access_token_secret)
+		api = twitter.Api(consumer_key = consumer_key, consumer_secret=consumer_secret, access_token_key = access_token, access_token_secret=access_token_secret)
 		api.PostUpdate('The HomeBrewServer.club is currently located at: '+str(ip)+', '+str(local_ip))
 		os.system('echo "'+ip+'" > '+ip_file)
 		os.system('echo "'+local_ip+'" > '+local_ip_file)

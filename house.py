@@ -34,12 +34,12 @@ while len(users) > 0:
 	for user in users:
 
 		#turn the users into HTML
-		#user_html = '<a href="/~'+user+'"/> '+user+'</a>'		
+		user_html = '<a href="/~'+user+'/"/>'+user+'</a>'		
 
 		if len(line_1) + len(user) + 5 < house_width:
 			line_1 += "  _" +"_"*len(user)+ "_  "
 			line_2 += " | " +" "*len(user)+ " | "
-			line_3 += " | " + user + " | "
+			line_3 += " | " + user_html + " | "
 			line_4 += " |_" +"_"*len(user)+ "_| "
 			to_pop.append(user_index)
 		user_index += 1
